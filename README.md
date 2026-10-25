@@ -2,7 +2,7 @@
 
 A lightweight Chrome extension that helps you track what you work on, see where your day goes, and export your time logs to **CSV** or **Excel**. Everything is stored locally in your browser. No account, no server, no tracking.
 
-![Time Tracker preview](screenshots/preview.png)
+![Time Tracker preview](Time-Tracker-Extension/screenshots/preview.png)
 
 ---
 
