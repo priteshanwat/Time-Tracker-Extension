@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Tracker</title>
+  <link rel="stylesheet" href="popup.css">
+  <script src="popup.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <div class="brand">
+        <img class="logo" src="icons/icon48.png" alt="Time Tracker logo">
+        <div>
+          <h1>Time Tracker</h1>
+          <p class="tagline">Focus. Track. Export.</p>
+        </div>
+      </div>
+      <span id="stateBadge" class="state-badge" data-state="idle">
+        <i></i><b>Idle</b>
+      </span>
+    </header>
+
+    <section class="hero">
+      <div class="hero-top">
+        <span class="hero-label">Today's tracked time</span>
+        <span id="todayDate" class="pill"></span>
+      </div>
+      <h2 id="totalTime">00:00:00</h2>
+      <div id="splitBar" class="split-bar"></div>
+      <div id="splitLegend" class="split-legend"></div>
+      <div class="hero-bottom">
+        <span id="sessionCount">0 sessions</span>
+        <span class="hero-hint">Every minute has a story.</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Current session</h3>
+      <div id="activeTask" class="active-task">
+        <span class="empty-icon">◷</span>
+        <p>No active task</p>
+        <span class="muted small">Start a task to begin tracking.</span>
+      </div>
+
+      <div id="timerControls" class="controls" hidden>
+        <button id="pauseBtn" class="button secondary" title="Pause">Pause</button>
+        <button id="stopBtn" class="button danger" title="Stop session">Stop session</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Start a new task</h3>
+      <form id="taskForm">
+        <label for="taskTitle">Task title</label>
+        <input id="taskTitle" type="text" placeholder="e.g. Build my portfolio" maxlength="120" required>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option disabled selected>Select a category</option>
+              <option>Work</option>
+              <option>Projects</option>
+              <option>Meetings</option>
+              <option>Communication</option>
+              <option>Planning</option>
+              <option>Learning</option>
+              <option>Research</option>
+              <option>Creative Work</option>
+              <option>Personal</option>
+              <option>Health &amp; Fitness</option>
+              <option>Break &amp; Meals</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="taskStatus">Task status</label>
+            <select id="taskStatus">
+              <option>In Progress</option>
+              <option>Not Started</option>
+              <option>Completed</option>
+              <option>On Hold</option>
+            </select>
+          </div>
+        </div>
+
+        <label for="taskNotes">Notes (optional)</label>
+        <textarea id="taskNotes" rows="2"
+          placeholder="What do you want to accomplish?"></textarea>
+
+        <button id="startBtn" class="button primary" title="Start tracking" type="submit">
+          ▶ Start tracking
+        </button>
+      </form>
+    </section>
+
+    <section class="panel logs-panel">
+      <div class="section-heading">
+        <h3>Today's time logs</h3>
+        <div class="export-group">
+          <button id="exportBtn" class="button export" title="Export to CSV">↓ CSV</button>
+          <button id="exportXlsxBtn" class="button export-xlsx" title="Export to Excel">↓ Excel</button>
+        </div>
+      </div>
+      <div id="logsList" class="logs-list"></div>
+    </section>
+
+    <footer>
+      <button id="clearBtn" class="text-button" title="Clear today's logs">Clear today's logs</button>
+    </footer>
+  </main>
+
+  <!-- Toast notifications (shared by every section) -->
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden>
+    <span id="toastIcon" class="toast-icon"></span>
+    <span id="toastText"></span>
+  </div>
+
+  <!-- Custom confirmation dialog (replaces the browser confirm box) -->
+  <div id="modal" class="modal-backdrop" hidden>
+    <div class="modal" role="alertdialog" aria-modal="true"
+      aria-labelledby="modalTitle" aria-describedby="modalText">
+      <div class="modal-icon">!</div>
+      <h4 id="modalTitle">Are you sure?</h4>
+      <p id="modalText"></p>
+      <div class="modal-actions">
+        <button id="modalCancel" class="button modal-cancel" title="Cancel">Cancel</button>
+        <button id="modalConfirm" class="button modal-confirm">Delete</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
