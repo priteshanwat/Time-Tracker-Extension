@@ -2,7 +2,7 @@
 
 A lightweight Chrome extension that helps you track what you work on, see where your day goes, and export your time logs to **CSV** or **Excel**. Everything is stored locally in your browser. No account, no server, no tracking.
 
-![Time Tracker preview](Time-Tracker-Extension/screenshots/preview.png)
+![Time Tracker preview](Time-Tracker-Extension/screenshots/small-promo-tile.png)
 
 ---
 
@@ -15,9 +15,10 @@ A lightweight Chrome extension that helps you track what you work on, see where 
 5. [Export formats](#export-formats)
 6. [Project structure](#project-structure)
 7. [Tech stack and how it works](#tech-stack-and-how-it-works)
-8. [Data and privacy](#data-and-privacy)
-9. [Contributing](#contributing)
-10. [License](#license)
+8. [Screenshots](#screenshots)
+9. [Data and privacy](#data-and-privacy)
+10. [Contributing](#contributing)
+11. [License](#license)
 
 ---
 
@@ -171,6 +172,15 @@ data = { logs: [ ...finishedSessions ], active: currentSession | null }
 **Excel export.** An `.xlsx` file is a ZIP of XML files. The extension writes the XML itself and packs it with a small ZIP writer that includes a CRC-32 checksum, so no third-party library is needed.
 
 **Permissions.** Only `storage`. There are no host permissions and no network access.
+
+---
+
+## Screenshots
+
+![Time Tracker preview](Time-Tracker-Extension/screenshots/screenshot-1.png)
+![Time Tracker preview](Time-Tracker-Extension/screenshots/screenshot-2.png)
+![Time Tracker preview](Time-Tracker-Extension/screenshots/screenshot-3.png)
+![Time Tracker preview](Time-Tracker-Extension/screenshots/screenshot-4.png)
 
 ---
 
